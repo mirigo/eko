@@ -1,4 +1,108 @@
 <!DOCTYPE html>
+<!-- Init JavaScript -->
+	<script src="dist/js/init.js"></script>
+	
+<script type="text/javascript">
+
+		
+		var ctx2 = document.getElementById("yn").getContext("2d");
+		
+		var data2 = {
+			//labels: ["Question1", "Question2","Question3"],
+			labels: ["Question1"],
+			datasets: [
+				{
+					label: "no",
+					backgroundColor: "rgba(220,70,102,.8)",
+					borderColor: "rgba(220,70,102,.8)",
+					//data: [5, 7,4]
+					data: [<?php echo $graphArray2[1]?>]
+				},
+				{
+					label: "yes",
+					backgroundColor: "rgba(70,148,8,.8)",
+					borderColor: "rgba(70,148,8,.8)",
+					data: [<?php echo $graphArray2[0]?>]
+				}
+			]
+		};
+		
+		var hBar = new Chart(ctx2, {
+			type:"horizontalBar",
+			data:data2,
+			
+			options: {
+				tooltips: {
+					mode:"label"
+				},
+				scales: {
+					yAxes: [{
+						stacked: true,
+						gridLines: {
+							color: "#878787",
+						},
+						ticks: {
+							fontFamily: "Roboto",
+							fontColor:"#878787"
+						}
+					}],
+					xAxes: [{
+						stacked: true,
+						gridLines: {
+							color: "#878787",
+						},
+						ticks: {
+							fontFamily: "Roboto",
+							fontColor:"#878787"
+						}
+					}],
+					
+				},
+				elements:{
+					point: {
+						hitRadius:40
+					}
+				},
+				animation: {
+					duration:	3000
+				},
+				responsive: true,
+				legend: {
+					display: false,
+				},
+				tooltip: {
+					backgroundColor:'rgba(33,33,33,1)',
+					cornerRadius:0,
+					footerFontFamily:"'Roboto'"
+				}
+				
+			}
+		});
+	
+	//if($('#morris_extra_bar_chart').length > 0)
+		// Morris bar chart
+		Morris.Bar({
+			element: 'morris_extra_bar_chart',
+			data: [{
+				y: '2006',
+				a: 100,
+				b: 90,
+				c: 60
+			}],
+			xkey: 'y',
+			ykeys: ['a', 'b', 'c'],
+			labels: ['A', 'B', 'C'],
+			barColors:['#e69a2a', '#ea6c41', '#177ec1'],
+			hideHover: 'auto',
+			gridLineColor: '#878787',
+			resize: true,
+			barGap:7,
+			gridTextColor:'#878787',
+			gridTextFamily:"Roboto"
+		});
+	
+	
+	</script>
 <?php
 session_start();
 if(isset($_GET["event"]))
@@ -875,110 +979,7 @@ $(document).ready(function() {
 	<!-- Switchery JavaScript -->
 	<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
 	
-	<!-- Init JavaScript -->
-	<script src="dist/js/init.js"></script>
 	
-<script type="text/javascript">
-
-		
-		var ctx2 = document.getElementById("yn").getContext("2d");
-		
-		var data2 = {
-			//labels: ["Question1", "Question2","Question3"],
-			labels: ["Question1"],
-			datasets: [
-				{
-					label: "no",
-					backgroundColor: "rgba(220,70,102,.8)",
-					borderColor: "rgba(220,70,102,.8)",
-					//data: [5, 7,4]
-					data: [<?php echo $graphArray2[1]?>]
-				},
-				{
-					label: "yes",
-					backgroundColor: "rgba(70,148,8,.8)",
-					borderColor: "rgba(70,148,8,.8)",
-					data: [<?php echo $graphArray2[0]?>]
-				}
-			]
-		};
-		
-		var hBar = new Chart(ctx2, {
-			type:"horizontalBar",
-			data:data2,
-			
-			options: {
-				tooltips: {
-					mode:"label"
-				},
-				scales: {
-					yAxes: [{
-						stacked: true,
-						gridLines: {
-							color: "#878787",
-						},
-						ticks: {
-							fontFamily: "Roboto",
-							fontColor:"#878787"
-						}
-					}],
-					xAxes: [{
-						stacked: true,
-						gridLines: {
-							color: "#878787",
-						},
-						ticks: {
-							fontFamily: "Roboto",
-							fontColor:"#878787"
-						}
-					}],
-					
-				},
-				elements:{
-					point: {
-						hitRadius:40
-					}
-				},
-				animation: {
-					duration:	3000
-				},
-				responsive: true,
-				legend: {
-					display: false,
-				},
-				tooltip: {
-					backgroundColor:'rgba(33,33,33,1)',
-					cornerRadius:0,
-					footerFontFamily:"'Roboto'"
-				}
-				
-			}
-		});
-	
-	//if($('#morris_extra_bar_chart').length > 0)
-		// Morris bar chart
-		Morris.Bar({
-			element: 'morris_extra_bar_chart',
-			data: [{
-				y: '2006',
-				a: 100,
-				b: 90,
-				c: 60
-			}],
-			xkey: 'y',
-			ykeys: ['a', 'b', 'c'],
-			labels: ['A', 'B', 'C'],
-			barColors:['#e69a2a', '#ea6c41', '#177ec1'],
-			hideHover: 'auto',
-			gridLineColor: '#878787',
-			resize: true,
-			barGap:7,
-			gridTextColor:'#878787',
-			gridTextFamily:"Roboto"
-		});
-	
-	
-	</script>
 	
 	
 			
